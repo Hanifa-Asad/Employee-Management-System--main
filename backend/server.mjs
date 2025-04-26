@@ -14,7 +14,18 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
-app.use(cors());
+app.use(
+	cors({
+		origin: ['http://localhost:5174',
+			 'http://localhost:5173',
+			'https://employee-management-system-main-sigma.vercel.app/',
+			
+			],
+		// methods: ['GET', 'PUT', 'POST', 'DELETE'],
+		credentials: true,
+		allowedHeaders: ['Content-Type', 'Authorization'],
+	}),
+);
 
 connectDB();
 
